@@ -4,9 +4,11 @@
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 // import "../styles/globals.css";
+"use client";
 
 import localFont from "next/font/local";
 import { Open_Sans } from "@next/font/google";
+import { useRouter } from "next/navigation";
 
 /** Add fonts into your Next.js project:
 
@@ -37,6 +39,12 @@ const myFont = localFont({
 const openSans = Open_Sans({ weight: "400", subsets: ["latin"] });
 
 export function MainPage() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/success"); // Navigate to the /success route
+  };
+
   return (
     <main
       key="1"
@@ -99,6 +107,7 @@ export function MainPage() {
           <button
             className="w-full inline-flex justify-center py-2 px-4 border border-gray-200 border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-600 dark:border-gray-800"
             type="submit"
+            onClick={handleClick}
           >
             Call
           </button>
